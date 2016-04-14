@@ -1,15 +1,18 @@
-<h2>Log in</h2>
+<div id="log_in">
+  <header>
+    <%= image_tag 'logo.png' %>
+    <%= link_to 'Create an account', new_user_registration_path, class: 'pull-right font-weight-normal' %>
+  </header>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <h1 class="text-center">LOG IN</h1>
+  <div class="container">
+    <%= simple_form_for(resource, html: {id: 'logInForm'}, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :email, placeholder: 'Your email' %>
+        <%= f.input :password, placeholder: 'Your password' %>
+        <div class="form-actions">
+          <%= f.button :submit, 'Login' %>
+        </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
