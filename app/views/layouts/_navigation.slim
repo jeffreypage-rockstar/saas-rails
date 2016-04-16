@@ -1,0 +1,15 @@
+#navigation
+  nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#top-navbar-collapse" aria-expanded="false"]
+          span.sr-only
+            | Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to image_tag('logo.png', class: 'logo-image'), class: 'navbar-brand'
+      #top-navbar-collapse.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          = link_to 'Surveys', surveys_path
+          = link_to 'Account'

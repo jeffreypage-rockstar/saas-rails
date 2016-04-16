@@ -3,13 +3,14 @@
     <%= image_tag 'logo.png' %>
     <%= link_to 'Create an account', new_user_registration_path, class: 'pull-right font-weight-normal' %>
   </header>
-
+  <%= flash_messages %>
   <h1 class="text-center">LOG IN</h1>
   <div class="container">
     <%= simple_form_for(resource, html: {id: 'logInForm'}, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.error_notification %>
         <%= f.input :email, placeholder: 'Your email' %>
         <%= f.input :password, placeholder: 'Your password' %>
+        <%= link_to 'Forgot password?', new_user_password_path %>
         <div class="form-actions">
           <%= f.button :submit, 'Login' %>
         </div>

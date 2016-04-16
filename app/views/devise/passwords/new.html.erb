@@ -1,15 +1,18 @@
-<h2>Forgot your password?</h2>
+<div id="new_password">
+  <header>
+    <%= image_tag 'logo.png', class: 'logo-image' %>
+    <%= link_to 'Create an account', new_user_registration_path, class: 'pull-right font-weight-normal' %>
+  </header>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <h1 class="text-center">FORGOT PASSWORD</h1>
+  <h4 class="text-center font-weight-normal">We’ll shoot you an email with a new password</h4>
+  <div class="container">
+    <%= simple_form_for(resource, html: {id: 'newPasswordForm'}, as: resource_name, url: password_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :email, placeholder: 'Your email' %>
+        <div class="form-actions">
+          <%= f.button :submit, 'Reset Password' %>
+        </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

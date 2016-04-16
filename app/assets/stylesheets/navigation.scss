@@ -1,0 +1,19 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#navigation {
+  color: white;
+  background-color: #3c4454;
+  padding: 0 129px;
+
+  a {
+    color: white;
+  }
+
+  .navbar-default {
+    background-color: #3c4454;
+    border: none;
+  }
+
+
+}
