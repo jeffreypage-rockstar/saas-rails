@@ -11,10 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412155732) do
+ActiveRecord::Schema.define(version: 20160418025750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "choices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "token"
+    t.string   "uuid",        default: "uuid_generate_v4()"
+    t.integer  "question_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "choices", ["question_id"], name: "index_choices_on_question_id", using: :btree
+
+  create_table "landing_pages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.string   "comment"
+    t.string   "email"
+    t.integer  "choice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "responses", ["choice_id"], name: "index_responses_on_choice_id", using: :btree
+
+  create_table "surveys", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.integer  "landing_page_id"
+    t.integer  "question_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+  end
+
+  add_index "surveys", ["question_id"], name: "index_surveys_on_question_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
