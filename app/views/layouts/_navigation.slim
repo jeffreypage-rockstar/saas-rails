@@ -1,6 +1,6 @@
 #navigation
   nav.navbar.navbar-default
-    .container-fluid
+    .container
       .navbar-header
         button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#top-navbar-collapse" aria-expanded="false"]
           span.sr-only
@@ -9,7 +9,14 @@
           span.icon-bar
           span.icon-bar
         = link_to image_tag('logo.png', class: 'logo-image'), class: 'navbar-brand'
+        = link_to 'Upgrade', edit_user_registration_path, class: 'btn btn-default'
       #top-navbar-collapse.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
-          = link_to 'Surveys', surveys_path
-          = link_to 'Account'
+          li class="#{active_class(surveys_path)}"
+            = link_to 'Surveys', surveys_path, class: 'navbar-button'
+          li class="#{active_class(edit_user_registration_path)}"
+            = link_to 'Account', edit_user_registration_path, class: 'navbar-button'
+
+
+- if active_class(surveys_path)
+  .aggregate-container

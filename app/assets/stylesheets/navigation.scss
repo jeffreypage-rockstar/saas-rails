@@ -5,6 +5,7 @@
   color: white;
   background-color: #3c4454;
   padding: 0 129px;
+  height: 61px;
 
   a {
     color: white;
@@ -13,7 +14,35 @@
   .navbar-default {
     background-color: #3c4454;
     border: none;
+
+    .container {
+      height: 61px;
+
+      .navbar-header {
+        margin-top: 15px;
+        padding-right: 0;
+
+        .btn {
+          margin-left: 25px;
+          background-color: #e1a535;
+          border: none;
+        }
+      }
+
+      .navbar-button {
+        background-color: transparent;
+        width: 122px;
+        height: 61px;
+        text-align: center;
+        line-height: 28px;
+      }
+    }
+
+    li.active {
+      background-color: #2d3139;
+    }
   }
+
 
 
 }

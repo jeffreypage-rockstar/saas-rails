@@ -7,13 +7,14 @@ Rails.application.routes.draw do
 
 
   resources :surveys
-  resources :account
 
-  devise_for :users
+
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   authenticated :user do
     root 'surveys#index', as: :authenticated_root
   end
 
   root 'welcome#index'
-
+  get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
 end
