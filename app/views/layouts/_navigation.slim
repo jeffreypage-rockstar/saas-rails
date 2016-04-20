@@ -18,5 +18,32 @@
             = link_to 'Account', edit_user_registration_path, class: 'navbar-button'
 
 
-- if active_class(surveys_path)
-  .aggregate-container
+- if current_page?(surveys_path)
+  .aggregates-container
+    .container
+      .aggregate-container.surveys
+        = image_tag('survey-icon.png', class: 'pull-left')
+        .aggregate-content.text-center
+          .aggregate-count
+            |
+              0
+          p Surveys
+
+      .aggregate-container.responses
+        = image_tag('response-icon.png', class: 'pull-left')
+        .aggregate-content.text-center
+          .aggregate-count
+            |
+                  0
+          p Responses
+
+      .aggregate-container.comments
+        = image_tag('comments-icon.png', class: 'pull-left')
+        .aggregate-content.text-center
+          .aggregate-count
+            |
+                  0
+          p Comments
+      = link_to 'Create a Survey', new_survey_path, class: 'btn btn-default'
+
+

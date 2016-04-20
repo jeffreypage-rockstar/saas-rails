@@ -43,6 +43,78 @@
     }
   }
 
+}
 
+.aggregates-container {
+  width: 100%;
+  height: 200px;
+  padding-top: 56px;
+  background-image: url('survey-dash-bg.jpg');
+  background-size: cover;
 
+  .aggregate-container {
+    width: 226.9px;
+    height: 80px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px 0 rgba(53, 53, 53, 0.21);
+    border: solid 1px #bfbfbf;
+    margin-right: 31px;
+    float: left;
+
+    img {
+      margin: 21px;
+      height: 38px;
+      vertical-align: middle;
+    }
+
+    .aggregate-content {
+      margin-left: 82.5px;
+      padding-top: 10px;
+      height: 100%;
+      background-color: white;
+      color: black;
+
+      .aggregate-count {
+        font-size: 24px;
+      }
+    }
+
+  }
+
+  .surveys {
+    background-color: #3c3c3c;
+
+    .aggregate-count {
+      color: #3c3c3c;
+    }
+  }
+
+  .responses {
+    background-color: #50b1e3;
+
+    .aggregate-count {
+      color: #50b1e3;
+    }
+  }
+
+  .comments {
+    background-color: #a362cf;
+
+    .aggregate-count {
+      color: #a362cf;
+    }
+  }
+
+  .btn {
+    width: 199px;
+    height: 44px;
+    margin: 18px 0 0 66.1px ;
+    border-radius: 4px;
+    background-color: #19cb7f;
+    box-shadow: 0 2px 2px 0 rgba(98, 98, 98, 0.5);
+    color: white;
+    font-size: 16px;
+    border: none;
+    line-height: 28px;
+  }
 }

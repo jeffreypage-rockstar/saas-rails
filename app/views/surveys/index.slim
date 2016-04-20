@@ -1,2 +1,14 @@
 #surveys_index
   .container
+    .row
+      .col-md-6
+        h3 Surveys
+        .surveys-container.text-center
+          h4 You don't have any surveys yet
+          p Create a survey and start learning from your audience!
+          = link_to 'Create a Survey', new_survey_path, class: 'btn btn-default'
+      .col-md-6
+        h3 Recent Activity
+        .activities-container.text-center
+          h4 No activity yet
+          p Try sharing your survey with more people
