@@ -1,0 +1,13 @@
+#landing_page
+  .container
+    .landing-page-block
+      h3
+        = @landingPage.headline
+      h4
+        = @landingPage.subtitle
+      hr
+      = simple_form_for(@comment, html: {id: 'newCommentForm'}) do |f|
+        = f.input :email, label: 'Your email', placeholder: 'yourname@domain.com'
+        = f.input :content, label: 'Comments', placeholder: 'Please leave your comments…'
+        = f.button :submit, 'Finish and send', class: 'btn btn-default'
+      = image_tag('logo.png', class: 'logo-image'), class: 'navbar-brand'

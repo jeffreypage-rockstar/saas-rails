@@ -9,7 +9,7 @@
               .row
                 .col-md-6
                   h3
-                    = link_to survey.name, survey_path(survey)
+                    = survey.name
                   small created #{survey.created_at.to_date.strftime('%b %d, %Y')}
                 .col-md-6
                   .row

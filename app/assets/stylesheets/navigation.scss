@@ -105,7 +105,7 @@
     }
   }
 
-  .btn {
+  .btn.btn-default {
     width: 199px;
     height: 44px;
     margin: 18px 0 0 66.1px ;
@@ -116,5 +116,10 @@
     font-size: 16px;
     border: none;
     line-height: 28px;
+  }
+
+  .btn-default:active:hover {
+    background-color: #19cb7f;
+    color: white;
   }
 }

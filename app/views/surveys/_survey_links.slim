@@ -1,0 +1,6 @@
+.survey-links
+  p
+    = @survey.question.name
+  - @survey.question.choices.each do |choice|
+    = link_to choice.name, create_success_survey_path(@survey)
+    p

@@ -14,16 +14,16 @@ module ApplicationHelper
     nil
   end
 
-  def controller?(*controller)
-    controller.include?(params[:controller])
-  end
-
-  def action?(*action)
-    action.include?(params[:action])
+  def controller?(controller)
+    controller.eql?(params[:controller])
   end
 
   def active_class(link_path)
     current_page?(link_path) ? "active" : ""
+  end
+
+  def active_class_with_controller(controller)
+    controller?(controller) ? "active" : ""
   end
 
 end

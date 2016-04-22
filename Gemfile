@@ -32,6 +32,10 @@ gem 'slim-rails'
 # easy forms
 gem 'simple_form'
 
+# cocoon
+
+gem 'cocoon'
+
 # devise
 gem 'devise'
 

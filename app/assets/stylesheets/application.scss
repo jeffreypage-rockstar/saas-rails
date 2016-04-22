@@ -12,9 +12,9 @@
  *
  *= require_tree .
  *= require_self
-
  */
 
 $baseFontFamily:  "Lato serif";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";

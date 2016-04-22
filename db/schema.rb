@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418030234) do
+ActiveRecord::Schema.define(version: 20160421165406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,22 +27,37 @@ ActiveRecord::Schema.define(version: 20160418030234) do
 
   add_index "choices", ["question_id"], name: "index_choices_on_question_id", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "email"
+    t.string   "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "responses_id"
+  end
+
+  add_index "comments", ["responses_id"], name: "index_comments_on_responses_id", using: :btree
+
   create_table "landing_pages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "headline"
     t.string   "subtitle"
+    t.integer  "survey_id"
+    t.boolean  "comment_enabled", default: true
   end
+
+  add_index "landing_pages", ["survey_id"], name: "index_landing_pages_on_survey_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.integer  "survey_id"
   end
 
+  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
+
   create_table "responses", force: :cascade do |t|
-    t.string   "comment"
-    t.string   "email"
     t.integer  "choice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,12 +66,13 @@ ActiveRecord::Schema.define(version: 20160418030234) do
   add_index "responses", ["choice_id"], name: "index_responses_on_choice_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
-    t.string   "name",            null: false
+    t.string   "name",                           null: false
     t.integer  "landing_page_id"
     t.integer  "question_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
+    t.boolean  "notify_enabled",  default: true
   end
 
   add_index "surveys", ["question_id"], name: "index_surveys_on_question_id", using: :btree

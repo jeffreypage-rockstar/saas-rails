@@ -12,7 +12,7 @@
         = link_to 'Upgrade', edit_user_registration_path, class: 'btn btn-default'
       #top-navbar-collapse.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
-          li class="#{active_class(surveys_path)}"
+          li class="#{active_class_with_controller('surveys')}"
             = link_to 'Surveys', surveys_path, class: 'navbar-button'
           li class="#{active_class(edit_user_registration_path)}"
             = link_to 'Account', edit_user_registration_path, class: 'navbar-button'
@@ -25,8 +25,7 @@
         = image_tag('survey-icon.png', class: 'pull-left')
         .aggregate-content.text-center
           .aggregate-count
-            |
-              0
+            = Survey.all.count
           p Surveys
 
       .aggregate-container.responses
@@ -34,7 +33,7 @@
         .aggregate-content.text-center
           .aggregate-count
             |
-                  0
+              0
           p Responses
 
       .aggregate-container.comments
@@ -42,7 +41,7 @@
         .aggregate-content.text-center
           .aggregate-count
             |
-                  0
+              0
           p Comments
       = link_to 'Create a Survey', new_survey_path, class: 'btn btn-default'
 
