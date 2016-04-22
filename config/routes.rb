@@ -13,6 +13,13 @@ Rails.application.routes.draw do
       get 'create_success'
     end
   end
+
+  resources :choices do
+    member do
+      get 'select'
+    end
+  end
+
   resources :landing_pages, only: [:show] do
     collection do
       get 'preview'
