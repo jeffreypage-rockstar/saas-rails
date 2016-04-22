@@ -25,7 +25,7 @@
         = image_tag('survey-icon.png', class: 'pull-left')
         .aggregate-content.text-center
           .aggregate-count
-            = Survey.all.count
+            = current_user.surveys.count
           p Surveys
 
       .aggregate-container.responses

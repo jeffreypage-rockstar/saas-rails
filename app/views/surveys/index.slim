@@ -3,8 +3,8 @@
     .row
       .col-md-6
         h2 Surveys
-        - if Survey.all.count > 0
-          - Survey.all.each do |survey|
+        - if current_user.surveys.all.count > 0
+          - current_user.surveys.all.each do |survey|
             .survey-container
               .row
                 .col-md-6

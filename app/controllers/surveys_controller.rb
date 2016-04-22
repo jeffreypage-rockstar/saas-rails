@@ -5,7 +5,7 @@ class SurveysController < ApplicationController
   end
 
   def new
-    @survey = Survey.new
+    @survey = current_user.surveys.build
     @survey.build_landing_page
     question = @survey.build_question
     3.times do
@@ -16,6 +16,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
+    @survey.user = current_user
     if @survey.save
       redirect_to create_success_survey_path(@survey)
     else
