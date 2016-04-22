@@ -1,2 +1,3 @@
-$("#inner-global-modal").html("<%= escape_javascript(render 'show') %>")
-$("#global-modal").modal("show")
+$("#inner-global-modal").html("<%= escape_javascript(render 'form') %>");
+$("#newCommentForm .btn").attr('data-dismiss', 'modal');
+$("#global-modal").modal("show");

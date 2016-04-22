@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
   authenticated :user do
     root 'surveys#index', as: :authenticated_root

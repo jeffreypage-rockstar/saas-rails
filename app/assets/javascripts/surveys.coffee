@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $("#preview_landing_page").click ->
+
+    headline = $('#survey_landing_page_attributes_headline').val()
+    subtitle = $('#survey_landing_page_attributes_subtitle').val()
+    comment_enabled = $('#survey_landing_page_attributes_comment_enabled').val()
+
+    $.get('/landing_pages/preview',
+      headline: headline
+      subtitle: subtitle,
+      comment_enabled: comment_enabled).done (data) ->
+    return false
+  return

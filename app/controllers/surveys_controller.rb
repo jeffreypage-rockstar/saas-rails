@@ -19,9 +19,8 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to create_success_survey_path(@survey)
     else
-      render 'create'
+      render 'new'
     end
-
   end
 
   def edit

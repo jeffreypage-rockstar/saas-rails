@@ -18,7 +18,7 @@
         = f.simple_fields_for :landing_page do |landing_page|
           = landing_page.input :headline, input_html: {value: 'Thanks for taking the survey!'}
           = landing_page.input :subtitle,  input_html: {value: 'If you have a moment, please briefly tell us why.'}
-          = link_to 'Preview Landing Page', landing_page_preview_path, class: 'grey-button pull-left'
+          = link_to 'Preview Landing Page', landing_page_preview_path, class: 'grey-button', remote: true, id: 'preview_landing_page'
           = landing_page.input :comment_enabled
 
         hr
