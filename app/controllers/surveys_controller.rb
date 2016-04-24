@@ -1,12 +1,14 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :create_success, :edit]
+  before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy]
   layout 'yesinsights'
   def index
   end
 
   def new
     @survey = current_user.surveys.build
-    @survey.build_landing_page
+    @landing_page = @survey.build_landing_page
+    @landing_page.headline = 'Thanks for taking the survey!'
+    @landing_page.subtitle = 'If you have a moment, please briefly tell us why.'
     question = @survey.build_question
     3.times do
       question.choices.build
@@ -29,16 +31,27 @@ class SurveysController < ApplicationController
   end
 
   def update
-
+    @survey.update(survey_params)
+    redirect_to surveys_path
   end
 
   def destroy
-
+    @survey.destroy
+    redirect_to surveys_path
   end
 
   def create_success
 
   end
+
+  def pause
+
+  end
+
+  def resume
+
+  end
+
   private
 
   def set_survey

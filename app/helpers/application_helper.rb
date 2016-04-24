@@ -15,7 +15,11 @@ module ApplicationHelper
   end
 
   def controller?(controller)
-    controller.eql?(params[:controller])
+    controller.eql?(controller_name)
+  end
+
+  def action?(action)
+    action.eql?(action_name)
   end
 
   def active_class(link_path)

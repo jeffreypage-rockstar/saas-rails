@@ -88,15 +88,14 @@
 
 }
 
-#surveys_new {
+#surveys_form {
 
   #newSurveyForm {
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
     border: solid 1px #d9d9d9;
-    padding-top: 22px;
-    padding-bottom: 22px;
+    padding: 22px 35px 22px 35px;
     margin-bottom: 101px;
 
     .nested-fields {
@@ -120,6 +119,7 @@
       background-color: #e4e4e4;
       color: #5a5a5a;
       padding: 8px 17px 10px 20px;
+      margin-right: 17px;
     }
 
     .form-group {
@@ -159,20 +159,6 @@
     border: solid 1px #d9d9d9;
     padding: 22px 0 42px 34px;
     margin-bottom: 101px;
-
-    .sub-block {
-      width: 580px;
-      border-radius: 3px;
-      background-color: #ffffff;
-      border: solid 1px #cdcdcd;
-      padding: 25px 0 25px 30px;
-    }
-
-    .survey-links {
-      a {
-        text-decoration: underline;
-      }
-    }
   }
 
   h3 {
@@ -190,35 +176,6 @@
 }
 
 #surveys_show {
-  .header {
-
-    h4 {
-      font-size: 20px;
-      margin: 28px 0;
-      color: #455a79;
-    }
-
-    .pull-right {
-      margin-top: 22px;
-
-      .btn-default {
-        width: 129px;
-        height: 35px;
-        border-radius: 4px;
-        border: solid 1px #cdcdcd;
-        color: #949494;
-        margin-left: 22px;
-        background: transparent;
-      }
-      .btn-default.active {
-        background-color: rgba(255, 255, 255, 0.49);
-        border: solid 1px #50b3e3;
-        color: #50b3e3;
-      }
-    }
-
-  }
-
   .results-block {
     border-radius: 4px;
     background-color: #ffffff;
@@ -253,5 +210,51 @@
     border: none;
     line-height: 28px;
     margin-top: 17px;
+  }
+}
+
+
+#survey_header {
+
+  h4 {
+    font-size: 20px;
+    margin: 28px 0;
+    color: #455a79;
+  }
+
+  .pull-right {
+    margin-top: 22px;
+
+    .btn-default {
+      width: 129px;
+      height: 35px;
+      border-radius: 4px;
+      border: solid 1px #cdcdcd;
+      color: #949494;
+      margin-left: 22px;
+      background: transparent;
+    }
+    .btn-default.active {
+      background-color: rgba(255, 255, 255, 0.49);
+      border: solid 1px #50b3e3;
+      color: #50b3e3;
+    }
+  }
+
+}
+
+.create-success-block {
+  .sub-block {
+    width: 580px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #cdcdcd;
+    padding: 25px 30px 25px 30px;
+  }
+
+  .survey-links {
+    a {
+      text-decoration: underline;
+    }
   }
 }

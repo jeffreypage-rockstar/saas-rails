@@ -1,0 +1,42 @@
+.container
+  - if edit_survey?
+    = render partial: 'surveys/survey_header'
+  - else
+    h2 Create new survey
+  #surveys_form
+    .row
+      = simple_form_for(@survey, html: {id: 'newSurveyForm', class: 'col-md-12'}) do |f|
+        = f.input :name, label: 'Survey Name(Internal use only)', placeholder: 'Name your survey'
+        hr
+        h3 Survey Question and Responses
+        - if edit_survey?
+          p For the safety of your data, please create a new survey instead
+          = link_to 'Create new Survey', new_survey_path, class: 'grey-button'
+        - else
+          = f.simple_fields_for :question do |q|
+            = q.input :name, label: 'Survey Question', placeholder: 'What would you like to ask your audience?'
+            hr
+            = q.simple_fields_for :choices do |choice|
+              = render 'choice_fields', :f => choice
+            .links
+              = link_to_add_association 'Add additional response', q, :choices, { class: 'grey-button' }
+        hr
+        - if edit_survey?
+          = render partial: 'surveys/snippet'
+          hr
+        h3 Customize Landing Page
+        = f.simple_fields_for :landing_page do |landing_page|
+          = landing_page.input :headline
+          = landing_page.input :subtitle
+          = link_to 'Preview Landing Page', landing_page_preview_path, class: 'grey-button', remote: true, id: 'preview_landing_page'
+          = landing_page.input :comment_enabled
+        hr
+        = f.input :notify_enabled, label: 'Notify me of every response'
+        = f.submit (edit_survey? ? 'Update Survey' : 'Create Survey!'), class: 'btn btn-default'
+        hr
+        - if edit_survey?
+          - if @survey.active?
+            = link_to 'Pause Survey', pause_survey_path(@survey), class: 'grey-button'
+          - else
+            = link_to 'Resume Survey', resume_survey_path(@survey), class: 'grey-button'
+          = link_to 'Delete Survey', survey_path(@survey), method: 'delete', class:'grey-button', confirm: 'Are you sure you want to delete the survey?'

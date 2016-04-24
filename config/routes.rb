@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :surveys do
     member do
       get 'create_success'
+      get 'pause'
+      get 'resume'
     end
   end
 
@@ -35,5 +37,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
+  get '/billing', to:'account#billing', as: 'account_billing'
   post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
 end

@@ -1,23 +1,6 @@
 #surveys_create_success
   .container
     h3 Create new survey
-    .notification-block.text-center.row
+    .notification-block.text-center
       p Success! Your survey has been created. Paste your survey snippet to start collecting responses.
-    .row
-      .create-success-block
-        h3 Survey Snippet
-        p There are 2 ways to embed your survey.
-        br
-        p 1. Copy and paste the following directly in your blog post or email.
-        .links-preview.sub-block
-          = render partial: 'surveys/survey_links'
-        br
-        br
-        p 2. Copy this HTML and paste it into your code
-        .links-code.sub-block
-          code.prettyprint
-
-
-javascript:
-  var code = "#{escape_javascript(render :partial => 'surveys/survey_links')}";
-  $('code').text(code);
+    = render partial: 'surveys/snippet'

@@ -1,0 +1,7 @@
+#survey_header
+  h4.pull-left
+    = @survey.name
+  .pull-right
+    = link_to 'View results', survey_path(@survey), class: survey_active_class(survey_path)
+    = link_to 'Edit survey', edit_survey_path(@survey), class: survey_active_class(edit_survey_path)
+  .clearfix

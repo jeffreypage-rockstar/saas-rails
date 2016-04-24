@@ -1,0 +1,67 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#billing {
+  .billing-block {
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #d9d9d9;
+    padding: 45px 48px 53px 41px;
+    margin-bottom: 40px;
+
+    .plans {
+      margin-top: 85px;
+      .plan-block {
+        background-color: #ffffff;
+        border: solid 1px #dddddd;
+
+        .plan-header {
+          height: 46px;
+          color: white;
+          .text-center {
+            padding-top: 12px;
+          }
+        }
+        .plan-content {
+          padding-bottom: 30px;
+
+          .buy-button {
+            width: 180px;
+            height: 50px;
+            border-radius: 4px;
+            background-color: #4a90e2;
+            color: white;
+            line-height: 32px;
+            border:none;
+
+          }
+          .buy-button.current {
+            background-color: #d6d6d6;
+          }
+        }
+      }
+    }
+    .personal {
+      background-color: #dc5858;
+    }
+    .startup {
+      background-color: #4c6ecc;
+    }
+    .growth {
+      background-color: #19cb7f;
+    }
+    .enterprise {
+      background-color: #904ccc;
+    }
+    .plan-popular {
+      margin-top: -40px;
+      height: 40px;
+      color: white;
+      background-color: #61a96d;
+      .text-center {
+        padding-top: 10px;
+      }
+    }
+  }
+}
