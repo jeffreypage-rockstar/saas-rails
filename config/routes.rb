@@ -1,20 +1,7 @@
 Rails.application.routes.draw do
 
+  # Routes that doesn't need user authentication
   get 'landing_pages/show'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-
-
-  resources :surveys do
-    member do
-      get 'create_success'
-      get 'pause'
-      get 'resume'
-    end
-  end
 
   resources :choices do
     member do
@@ -22,17 +9,34 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :landing_pages, only: [:show] do
+  resources :responses do
     collection do
-      get 'preview'
+      get 'create_success'
     end
   end
 
-  resources :comments
-
+  # Customize devise controller for user registrations
   devise_for :users, controllers: { registrations: 'users/registrations' }
+
   authenticated :user do
     root 'surveys#index', as: :authenticated_root
+  end
+
+  # Routes that needs user authentication
+  authenticate :user do
+    resources :surveys do
+      member do
+        get 'create_success'
+        get 'pause'
+        get 'resume'
+      end
+    end
+
+    resources :landing_pages, only: [:show] do
+      collection do
+        get 'preview'
+      end
+    end
   end
 
   root 'welcome#index'

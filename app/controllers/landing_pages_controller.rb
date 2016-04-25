@@ -8,7 +8,7 @@ class LandingPagesController < ApplicationController
     @landingPage.headline = params[:headline]
     @landingPage.subtitle = params[:subtitle]
     @landingPage.comment_enabled = params[:comment_enabled]
-    @comment = Comment.new
+    @response = Response.new
   end
 
 end
