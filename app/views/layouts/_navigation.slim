@@ -18,7 +18,8 @@
             = link_to 'Account', edit_user_registration_path, class: 'navbar-button'
 
 
-- if current_page?(surveys_path)
+- if current_page?(surveys_path) || current_page?(root_path)
+  - decorated_user = current_user.decorate
   .aggregates-container
     .container
       .aggregate-container.surveys
@@ -32,16 +33,14 @@
         = image_tag('response-icon.png', class: 'pull-left')
         .aggregate-content.text-center
           .aggregate-count
-            |
-              0
+            = decorated_user.responses_count
           p Responses
 
       .aggregate-container.comments
         = image_tag('comments-icon.png', class: 'pull-left')
         .aggregate-content.text-center
           .aggregate-count
-            |
-              0
+            = decorated_user.comments_count
           p Comments
       = link_to 'Create a Survey', new_survey_path, class: 'btn btn-default'
 

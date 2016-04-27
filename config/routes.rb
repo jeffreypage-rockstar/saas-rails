@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Routes that doesn't need user authentication
-  get 'landing_pages/show'
+
 
   resources :choices do
     member do
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'surveys#index', as: :authenticated_root
   end
+  root 'welcome#index'
 
   # Routes that needs user authentication
   authenticate :user do
@@ -37,10 +38,12 @@ Rails.application.routes.draw do
         get 'preview'
       end
     end
+
+    get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
+    get '/billing', to:'account#billing', as: 'account_billing'
+    post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
   end
 
-  root 'welcome#index'
-  get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
-  get '/billing', to:'account#billing', as: 'account_billing'
-  post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
+
+
 end

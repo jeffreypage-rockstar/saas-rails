@@ -20,7 +20,8 @@
                       p.font-size-12 Responses
                     .col-md-4.col-md-offset-1.text-center
                       .comments-count
-                        p 0
+                        p
+                          = survey.question.responses.with_comment.count
                       p.font-size-12 Comments
         - else
           .survey-container.text-center.blank
@@ -29,6 +30,33 @@
             = link_to 'Create a Survey', new_survey_path, class: 'btn btn-default'
       .col-md-4.col-md-offset-1
         h2 Recent Activity
-        .activity-container.text-center.blank
-          h3 No activity yet
-          p Try sharing your survey with more people
+        - if current_user.decorate.responses_count > 0
+          - current_user.decorate.responses.each do |response|
+            .activity-container
+              .activity-header
+                .name.pull-left
+                  = response.email
+                .time.pull-right
+                  = "#{time_ago_in_words(response.created_at)} ago"
+                .clearfix
+              .activity-content
+                .question
+                  strong Q:&nbsp;
+                  span
+                    = response.choice.question.name
+                hr
+                .choice
+                  strong A:&nbsp;
+                  span
+                    = response.choice.name
+                - unless response.comment.nil?
+                  hr
+                  em
+                    | &quot;
+                    = response.comment
+                    | &quot;
+
+        - else
+          .activity-container.text-center.blank
+            h3 No activity yet
+            p Try sharing your survey with more people

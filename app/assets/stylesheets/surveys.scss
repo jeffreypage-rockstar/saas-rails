@@ -47,10 +47,27 @@
       background-color: #ffffff;
       box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
       border: solid 1px #d9d9d9;
+      margin-bottom: 18px;
 
+      .activity-header {
+        background-color: #50b1e3;
+        color: white;
+        font-size: 12px;
+        font-weight: normal;
+        padding: 8px 17px;
+      }
+
+      .activity-content {
+        padding: 14px 14px;
+      }
+
+      hr {
+        margin: 14px -10px;
+      }
       p {
         font-weight: normal;
       }
+
 
     }
 

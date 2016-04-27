@@ -39,6 +39,9 @@ gem 'cocoon'
 # devise
 gem 'devise'
 
+# decorator
+gem 'draper', '~> 1.3'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
