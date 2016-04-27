@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :responses do
     collection do
       get 'create_success'
+      get 'paused'
     end
   end
 

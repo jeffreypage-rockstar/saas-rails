@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy]
+  before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy, :pause, :resume]
   layout 'yesinsights'
   def index
   end
@@ -45,11 +45,17 @@ class SurveysController < ApplicationController
   end
 
   def pause
-
+    @survey.active = false
+    @survey.save
+    flash[:notice] = 'Successfully paused the survey!'
+    redirect_to edit_survey_path(@survey)
   end
 
   def resume
-
+    @survey.active = true
+    @survey.save
+    flash[:notice] = 'Successfully resumed the survey!'
+    redirect_to edit_survey_path(@survey)
   end
 
   private
