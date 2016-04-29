@@ -308,15 +308,16 @@
 }
 
 
-a.grey-button {
+.grey-button  {
   border-radius: 2px;
   background-color: #e4e4e4;
   color: #5a5a5a;
   padding: 8px 17px 10px 20px;
   margin-right: 17px;
+  border:none;
 }
 
-a.grey-button.highlight {
+.grey-button.highlight {
   background-color: #4a90e2;
   color: white;
 }

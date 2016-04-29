@@ -30,4 +30,8 @@ module ApplicationHelper
     controller?(controller) ? "active" : ""
   end
 
+  def active_class_for_account_tab
+    current_page?(edit_user_registration_path) || current_page?(account_billing_path) ? 'active' : ''
+  end
+
 end

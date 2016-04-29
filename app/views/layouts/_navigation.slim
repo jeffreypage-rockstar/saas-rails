@@ -8,13 +8,13 @@
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = link_to image_tag('logo.png', class: 'logo-image'), class: 'navbar-brand'
+        = link_to image_tag('logo.png', class: 'logo-image'), root_path
         = link_to 'Upgrade', edit_user_registration_path, class: 'btn btn-default'
       #top-navbar-collapse.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
           li class="#{active_class_with_controller('surveys')}"
             = link_to 'Surveys', surveys_path, class: 'navbar-button'
-          li class="#{active_class(edit_user_registration_path)}"
+          li class="#{active_class_for_account_tab}"
             = link_to 'Account', edit_user_registration_path, class: 'navbar-button'
 
 

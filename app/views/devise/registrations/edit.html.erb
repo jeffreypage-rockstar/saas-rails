@@ -3,8 +3,8 @@
     <div class="header">
       <h4 class="pull-left">Account</h4>
       <div class="pull-right">
-          <%= link_to 'Settings', edit_user_registration_path, class: 'btn btn-default active' %>
-          <%= link_to 'Billing', account_billing_path, class: 'btn btn-default' %>
+          <%= link_to 'Settings', edit_user_registration_path, class: account_active_class(edit_user_registration_path) %>
+          <%= link_to 'Billing', account_billing_path, class: account_active_class(account_billing_path) %>
       </div>
     </div>
 

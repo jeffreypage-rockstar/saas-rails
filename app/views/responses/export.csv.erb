@@ -1,0 +1,5 @@
+<%- headers = ['Response', 'Comment', 'Email', 'Date'] -%>
+<%= CSV.generate_line headers %>
+<%- @responses.each do |response| -%>
+    <%= CSV.generate_line([response.choice.name, response.comment, response.email, response.created_at.localtime.strftime('%m/%d/%Y %T')]) -%>
+<%- end -%>

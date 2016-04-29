@@ -25,7 +25,14 @@ class ResponsesController < ApplicationController
   end
 
   def export
-
+    @responses = Response.find(params[:response_ids])
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"responses\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   private

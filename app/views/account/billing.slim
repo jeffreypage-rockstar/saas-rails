@@ -3,8 +3,8 @@
     h4.pull-left
       | Account
     .pull-right
-      = link_to 'Settings', edit_user_registration_path, class: 'btn btn-default active'
-      = link_to 'Billing', account_billing_path, class: 'btn btn-default'
+      = link_to 'Settings', edit_user_registration_path, class: account_active_class(edit_user_registration_path)
+      = link_to 'Billing', account_billing_path, class: account_active_class(account_billing_path)
   .clearfix
   .billing-block
     h2.text-center Our Plans
@@ -18,12 +18,12 @@
                 p P E R S O N A L
             .plan-content
               .plan-price
-                h2.text-center $0
+                h2.text-center $9
                 h4.text-center per month
               hr
-              p.text-center 100 responses
+              p.text-center 1,000 responses
               hr
-              p.text-center Unlimited surveys
+              p.text-center 5 surveys
               hr
               p.text-center Instant notifications
               hr
@@ -38,9 +38,9 @@
                 h2.text-center $20
                 h4.text-center per month
               hr
-              p.text-center 1000 responses
+              p.text-center 5,000 responses
               hr
-              p.text-center Unlimited surveys
+              p.text-center 10 surveys
               hr
               p.text-center Instant notifications
               hr
@@ -55,10 +55,10 @@
                 p G R O W T H
             .plan-content
               .plan-price
-                h2.text-center $59
+                h2.text-center $509
                 h4.text-center per month
               hr
-              p.text-center 5000 responses
+              p.text-center 25,000 responses
               hr
               p.text-center Unlimited surveys
               hr
