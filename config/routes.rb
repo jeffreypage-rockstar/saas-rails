@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   # Routes that doesn't need user authentication
 
-
   resources :choices do
     member do
       get 'select'

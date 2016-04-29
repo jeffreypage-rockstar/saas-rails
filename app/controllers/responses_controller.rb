@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create, :create_success, :paused]
   def create
     @response = Response.new(response_params)
     if @response.choice.question.survey.active?
