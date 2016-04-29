@@ -33,7 +33,7 @@
         - if current_user.decorate.responses_count > 0
           - current_user.decorate.responses.first(5).each do |response|
             .activity-container
-              .activity-header
+              div class="activity-header #{response.comment.nil? ? '' : 'with-comment'}"
                 .name.pull-left
                   = response.email
                 .time.pull-right
