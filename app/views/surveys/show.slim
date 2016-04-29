@@ -41,34 +41,35 @@
             span.square style="background-color: ##{choice.color}"
             span #{choice.responses.count}(#{choice.percent}%) - #{choice.name}
     br
-    hr
-    br
-    .export-container.text-left
-      = form_tag export_responses_path(format: :csv) do
-        = submit_tag 'Export selected responses', class: 'export-responses grey-button'
-        a.grey-button.delete-responses.hidden Delete selected responses
-        table.table
-          thead
-            tr
-              th
-                = check_box_tag('check_all')
-              th Response
-              th Comment
-              th Email
-              th Date
-          tbody
-            - @survey.responses.each do |response|
+    - if @survey.responses_count > 0
+      hr
+      br
+      .export-container.text-left
+        = form_tag export_responses_path(format: :csv) do
+          = submit_tag 'Export selected responses', class: 'export-responses grey-button'
+          a.grey-button.delete-responses.hidden Delete selected responses
+          table.table
+            thead
               tr
-                td
-                  = check_box_tag 'response_ids[]', response.id
-                td
-                  span.square style="background-color: ##{response.choice.color}"
-                td
-                  em &quot;#{response.comment}&quot;
-                td
-                  = response.email
-                td
-                  = response.created_at.localtime.strftime('%m-%d-%Y')
+                th
+                  = check_box_tag('check_all')
+                th Response
+                th Comment
+                th Email
+                th Date
+            tbody
+              - @survey.responses.each do |response|
+                tr
+                  td
+                    = check_box_tag 'response_ids[]', response.id
+                  td
+                    span.square style="background-color: ##{response.choice.color}"
+                  td
+                    em &quot;#{response.comment}&quot;
+                  td
+                    = response.email
+                  td
+                    = response.created_at.localtime.strftime('%m-%d-%Y')
 
 javascript:
   var destroy_bulk_responses_path = "#{destroy_bulk_responses_path}";
