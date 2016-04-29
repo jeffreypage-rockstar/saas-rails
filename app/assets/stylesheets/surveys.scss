@@ -174,10 +174,6 @@
     border: solid 1px #d9d9d9;
     padding: 22px 0 42px 34px;
     margin-bottom: 101px;
-
-    code {
-      word-wrap: break-word;
-    }
   }
 
   h3 {
@@ -328,4 +324,13 @@
 .grey-button.highlight {
   background-color: #4a90e2;
   color: white;
+}
+
+.live-links {
+  width: 580px;
+
+  pre {
+    padding: 20px;
+    border: solid 1px #d9d9d9 !important;
+  }
 }

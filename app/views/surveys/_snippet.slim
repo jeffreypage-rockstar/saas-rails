@@ -8,9 +8,10 @@
   br
   br
   p 2. Copy this HTML and paste it into your code
-  .links-code.sub-block
-    code.prettyprint
+  .live-links
+    pre.prettyprint
+
 
 javascript:
   var code = "#{escape_javascript(render :partial => 'surveys/survey_links')}";
-  $('code').text(code);
+  $('pre.prettyprint').text(code);
