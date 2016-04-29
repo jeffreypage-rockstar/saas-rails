@@ -1,4 +1,5 @@
 #surveys_show
+  - @survey = @survey.decorate
   = render partial: 'surveys/survey_header'
   .results-block.text-center
     h3
@@ -9,20 +10,90 @@
           = image_tag('response-icon.png', class: 'pull-left')
           .aggregate-content.text-center
             .aggregate-count
-              |
-                0
+              = @survey.responses_count
             p Responses
         .aggregate-container.comments
           = image_tag('comments-icon.png', class: 'pull-left')
           .aggregate-content.text-center
             .aggregate-count
-              |
-                0
+              = @survey.comments_count
             p Comments
     .responses-container.row
       .col-md-4.col-md-offset-2.text-center
-        h4 You don't have any responses yet
-        p Share your survey to your audience to get responses to your question
+        - if @survey.responses_count == 0
+          h4 You don't have any responses yet
+          p Share your survey to your audience to get responses to your question
+        - else
+          .choice-percent-charts
+            - @survey.question.choices.each do |choice|
+              - choice = choice.decorate
+              .choice-percent-chart style="background-color: ##{choice.color}; width: #{choice.relative_percent}%;"
+          .rulers
+            span.pull-left 0
+            span.pull-right #{@survey.max_responses_count}
+            .clearfix
+          p responses
       .col-md-4.text-left
         - @survey.question.choices.each do |choice|
-          p 0(0%) - #{choice.name}
+          /span style="background-color: ##{"ff0000"}; height: 30px"
+          - choice = choice.decorate
+          .choice-percent-content
+            span.square style="background-color: ##{choice.color}"
+            span #{choice.responses.count}(#{choice.percent}%) - #{choice.name}
+    br
+    hr
+    br
+    .export-container.text-left
+      a.grey-button.export-responses Export selected responses
+      a.grey-button.delete-responses.hidden Delete selected responses
+      table.table
+        thead
+          tr
+            th
+              = check_box_tag('check_all')
+            th Response
+            th Comment
+            th Email
+            th Date
+        tbody
+          - @survey.responses.each do |response|
+            tr
+              td
+                = check_box_tag('single_check', response.id, false)
+              td
+                span.square style="background-color: ##{response.choice.color}"
+              td
+                em &quot;#{response.comment}&quot;
+              td
+                = response.email
+              td
+                = response.created_at
+
+javascript:
+  var destroy_bulk_responses_path = "#{destroy_bulk_responses_path}";
+
+  $(function(){
+    $('input[name=single_check]').change(function() {
+      if ($('input[name=single_check]:checked').length > 0) {
+        $('.export-responses').addClass('highlight');
+        $('.delete-responses').removeClass('hidden');
+      } else {
+        $('.export-responses').removeClass('highlight');
+        $('.delete-responses').addClass('hidden');
+      }
+    });
+
+    $('input[name=check_all]').click(function (e) {
+      var table = $(e.target).closest('table');
+      $('td input:checkbox', table).prop('checked', this.checked);
+    });
+
+    $('.delete-responses').click(function(){
+      var allVals = [];
+      $('input[name=single_check]:checked').each(function () {
+        allVals.push($(this).val());
+      });
+
+      $.post(destroy_bulk_responses_path, {"ids": allVals.join(',')});
+    });
+  });

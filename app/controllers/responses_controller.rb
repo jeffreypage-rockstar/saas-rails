@@ -1,7 +1,5 @@
 class ResponsesController < ApplicationController
   def create
-
-
     @response = Response.new(response_params)
     if @response.choice.question.survey.active?
       if @response.save
@@ -16,7 +14,17 @@ class ResponsesController < ApplicationController
     else
       redirect_to paused_responses_path
     end
+  end
 
+  def destroy_bulk
+    response_ids = params[:ids].split(',');
+    response_ids.each do |response_id|
+      response = Response.find(response_id)
+      response.destroy
+    end
+  end
+
+  def export
 
   end
 

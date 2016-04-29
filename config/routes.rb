@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     collection do
       get 'create_success'
       get 'paused'
+      post 'destroy_bulk'
+      post 'export'
     end
   end
 
@@ -44,7 +46,4 @@ Rails.application.routes.draw do
     get '/billing', to:'account#billing', as: 'account_billing'
     post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
   end
-
-
-
 end

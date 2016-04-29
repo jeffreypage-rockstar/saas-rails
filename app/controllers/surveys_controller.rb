@@ -1,6 +1,9 @@
+require 'color-generator'
+
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy, :pause, :resume]
   layout 'yesinsights'
+
   def index
   end
 
@@ -10,8 +13,10 @@ class SurveysController < ApplicationController
     @landing_page.headline = 'Thanks for taking the survey!'
     @landing_page.subtitle = 'If you have a moment, please briefly tell us why.'
     question = @survey.build_question
+    generator = ColorGenerator.new saturation: 0.3, lightness: 0.75
     3.times do
-      question.choices.build
+      choice = question.choices.build
+      choice.color = generator.create_hex
     end
 
   end
@@ -40,6 +45,7 @@ class SurveysController < ApplicationController
     redirect_to surveys_path
   end
 
+
   def create_success
 
   end
@@ -67,7 +73,7 @@ class SurveysController < ApplicationController
   def survey_params
     params.require(:survey).permit(
         :name, :notify_enabled,
-        question_attributes: [:name, choices_attributes: [:name] ],
+        question_attributes: [:name, choices_attributes: [:name, :color] ],
         landing_page_attributes: [:headline, :subtitle, :comment_enabled]
     )
   end

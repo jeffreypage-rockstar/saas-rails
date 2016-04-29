@@ -42,6 +42,9 @@ gem 'devise'
 # decorator
 gem 'draper', '~> 1.3'
 
+# color generator
+gem 'color-generator', '~> 0.0.4'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

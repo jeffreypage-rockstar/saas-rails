@@ -31,7 +31,7 @@
       .col-md-4.col-md-offset-1
         h2 Recent Activity
         - if current_user.decorate.responses_count > 0
-          - current_user.decorate.responses.each do |response|
+          - current_user.decorate.responses.first(5).each do |response|
             .activity-container
               .activity-header
                 .name.pull-left
