@@ -5,7 +5,7 @@ class ResponsesController < ApplicationController
     if @response.choice.question.survey.active?
       if @response.save
         if @response.choice.question.survey.notify_enabled?
-          UserMailer.new_response_email(current_user, @response.choice.question).deliver_now
+          UserMailer.new_response_email(@response.choice.question.survey.user, @response.choice.question).deliver_now
         end
 
         redirect_to create_success_responses_path
