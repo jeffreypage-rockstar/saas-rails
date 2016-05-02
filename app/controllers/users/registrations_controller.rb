@@ -19,6 +19,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def cancel
+
+  end
+
+  def cancel_popup
+
+  end
+
   # PUT /resource
   def update
     params = account_update_params

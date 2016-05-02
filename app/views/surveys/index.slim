@@ -36,6 +36,7 @@
               div class="activity-header #{response.comment.nil? ? '' : 'with-comment'}"
                 .name.pull-left
                   = response.email
+
                 .time.pull-right
                   = "#{time_ago_in_words(response.created_at)} ago"
                 .clearfix

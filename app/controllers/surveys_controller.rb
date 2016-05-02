@@ -1,7 +1,7 @@
 require 'color-generator'
 
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy, :pause, :resume]
+  before_action :set_survey, only: [:show, :create_success, :edit, :update, :destroy, :pause, :resume, :delete]
   layout 'yesinsights'
 
   def index
@@ -45,6 +45,9 @@ class SurveysController < ApplicationController
     redirect_to surveys_path
   end
 
+  def delete
+
+  end
 
   def create_success
 

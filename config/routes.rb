@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         get 'create_success'
         get 'pause'
         get 'resume'
+        get 'delete'
       end
     end
 
@@ -42,7 +43,10 @@ Rails.application.routes.draw do
     end
 
     get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
+    get '/account/cancel', to: 'account#cancel', as: 'account_cancel'
+    get '/account/cancel_popup', to: 'account#cancel_popup', as: 'account_cancel_popup'
     get '/billing', to:'account#billing', as: 'account_billing'
     post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
   end
 end
+

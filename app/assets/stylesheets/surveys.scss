@@ -12,14 +12,6 @@
       padding: 23px 0 26px 35px;
       margin-bottom: 18px;
 
-      p {
-        font-weight: normal;
-      }
-
-      h3 {
-        margin-top: 0;
-      }
-
       .responses-count {
         color: #50b1e3;
         font-size: 18px;
@@ -295,6 +287,15 @@
 
 }
 
+.popup {
+  padding: 35px;
+
+  .actions {
+    margin-top: 35px;
+    height: 30px;
+  }
+}
+
 .create-success-block {
   .sub-block {
     width: 580px;
@@ -326,6 +327,11 @@
   color: white;
 }
 
+.grey-button.delete {
+  background-color: #ff4e64;
+  color: white;
+}
+
 .live-links {
   width: 580px;
 
@@ -333,4 +339,12 @@
     padding: 20px;
     border: solid 1px #d9d9d9 !important;
   }
+}
+
+p {
+  font-weight: normal;
+}
+
+h3 {
+  margin-top: 0;
 }

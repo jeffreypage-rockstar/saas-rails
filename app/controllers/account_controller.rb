@@ -3,4 +3,11 @@ class AccountController < ApplicationController
   def billing
 
   end
+
+  def cancel
+    current_user.active = false
+    # current_user.save
+    flash[:notice] = 'You have cancelled your subscription. Your account will be inactive in the next billing cycle and you will not be charged.'
+    redirect_to account_settings_path
+  end
 end

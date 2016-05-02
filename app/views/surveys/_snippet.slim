@@ -10,7 +10,14 @@
   p 2. Copy this HTML and paste it into your code
   .live-links
     pre.prettyprint
-
+  - if current_page?(create_success_survey_path)
+    br
+    hr
+    br
+    = link_to 'View Results', survey_path(@survey), class: 'grey-button'
+    = link_to 'Edit Survey', edit_survey_path(@survey), class: 'grey-button'
+    br
+    br
 
 javascript:
   var code = "#{escape_javascript(render :partial => 'surveys/survey_links')}";
