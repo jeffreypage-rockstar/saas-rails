@@ -1,0 +1,27 @@
+.col-md-3
+  = form_tag create_stripe_customer_path do
+    script.stripe-button.active[src="https://checkout.stripe.com/checkout.js" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-name="#{plan.name.upcase}" data-description="New users are charged after 14 days" data-label="Start Free Trial" data-panel-label="Start Free Trial"]
+    .plan-block
+      - if plan.name == 'growth'
+        .plan-popular
+          .text-center
+            p Most popular
+      .plan-header class="#{plan.name}"
+        .text-center
+          p
+            = plan.name.upcase
+      .plan-content
+        .plan-price
+          h2.text-center
+            = "$#{plan.price}"
+          h4.text-center per month
+        hr
+        p.text-center
+          = "#{plan.response_limit > 0 ? plan.response_limit : 'Unlimited'} responses"
+        hr
+        p.text-center
+          = "#{plan.survey_limit > 0 ? plan.survey_limit : 'Unlimited'} surveys"
+        hr
+        p.text-center Instant notifications
+        hr
+        = submit_tag 'Start Free Trial', class: 'buy-button btn btn-default'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502040901) do
+ActiveRecord::Schema.define(version: 20160505092212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20160502040901) do
 
   add_index "landing_pages", ["survey_id"], name: "index_landing_pages_on_survey_id", using: :btree
 
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.integer  "price"
+    t.integer  "response_limit", default: 0
+    t.integer  "survey_limit",   default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,6 +77,18 @@ ActiveRecord::Schema.define(version: 20160502040901) do
   end
 
   add_index "responses", ["choice_id"], name: "index_responses_on_choice_id", using: :btree
+
+  create_table "stripe_details", force: :cascade do |t|
+    t.boolean  "trial_started", default: false
+    t.string   "customer_id"
+    t.string   "plan_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.datetime "trial_end"
+    t.integer  "user_id"
+  end
+
+  add_index "stripe_details", ["user_id"], name: "index_stripe_details_on_user_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.string   "name",                           null: false

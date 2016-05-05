@@ -11,77 +11,8 @@
     h4.text-center Getting value from YesInsights? Upgrade anytime, no commitment.
     .plans
       .row
-        .col-md-3
-          .plan-block
-            .plan-header.personal
-              .text-center
-                p P E R S O N A L
-            .plan-content
-              .plan-price
-                h2.text-center $9
-                h4.text-center per month
-              hr
-              p.text-center 1,000 responses
-              hr
-              p.text-center 5 surveys
-              hr
-              p.text-center Instant notifications
-              hr
-              = link_to 'Current Plan', account_billing_path, class: 'buy-button btn btn-default current'
-        .col-md-3
-          .plan-block
-            .plan-header.startup
-              .text-center
-                p S T A R T U P
-            .plan-content
-              .plan-price
-                h2.text-center $20
-                h4.text-center per month
-              hr
-              p.text-center 5,000 responses
-              hr
-              p.text-center 10 surveys
-              hr
-              p.text-center Instant notifications
-              hr
-              = link_to 'Upgrade', account_billing_path, class: 'buy-button btn btn-default'
-        .col-md-3
-          .plan-block
-            .plan-popular
-              .text-center
-                p Most popular
-            .plan-header.growth
-              .text-center
-                p G R O W T H
-            .plan-content
-              .plan-price
-                h2.text-center $59
-                h4.text-center per month
-              hr
-              p.text-center 25,000 responses
-              hr
-              p.text-center Unlimited surveys
-              hr
-              p.text-center Instant notifications
-              hr
-              = link_to 'Upgrade', account_billing_path, class: 'buy-button btn btn-default'
-        .col-md-3
-          .plan-block
-            .plan-header.enterprise
-              .text-center
-                p E N T E R P R I S E
-            .plan-content
-              .plan-price
-                h2.text-center $149
-                h4.text-center per month
-              hr
-              p.text-center Unlimited responses
-              hr
-              p.text-center Unlimited surveys
-              hr
-              p.text-center Instant notifications
-              hr
-              = link_to 'Upgrade', account_billing_path, class: 'buy-button btn btn-default'
+        - Plan.all.each do |plan|
+          = render 'account/plan', {plan: plan}
     br
     br
     h4.text-center

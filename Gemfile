@@ -45,8 +45,17 @@ gem 'draper', '~> 1.3'
 # color generator
 gem 'color-generator', '~> 0.0.4'
 
+# stripe
+gem 'stripe'
+
+# stripe event
+gem 'stripe_event'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+# Dotenv Rails
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Use Unicorn as the app server
 # gem 'unicorn'
