@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :surveys
-  has_one :stripe_detail
+  has_one :subscription
 end

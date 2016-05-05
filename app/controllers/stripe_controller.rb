@@ -26,4 +26,8 @@ class StripeController < ApplicationController
   def downgrade
 
   end
+
+  def cancel
+
+  end
 end
