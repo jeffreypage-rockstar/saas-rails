@@ -23,4 +23,5 @@
         hr
         p.text-center Instant notifications
         hr
-        script.stripe-button[src="https://checkout.stripe.com/checkout.js" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-description="New users are charged after 14 days" data-name="#{plan.name.upcase}" data-label="Start Free Trial" data-panel-label="Start Free Trial"]
+        = hidden_field_tag 'plan', plan.name
+        script.stripe-button[src="https://checkout.stripe.com/checkout.js" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-description="New users are charged after 7 days" data-name="#{plan.name.upcase}" data-label="#{subscribe_button_text(current_user, plan.name)}" data-panel-label="#{subscribe_button_text(current_user, plan.name)}"]
