@@ -21,10 +21,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    @subscription.update(subscription_params)
-    subscriptionObject = Stripe::Subscription.retrieve(@subscription.subscription_token)
-    subscriptionObject.plan = @subscription.plan.name
-    subscription.save
+    @subscription.attributes = subscription_params
+    customer = Stripe::Customer.retrieve(@subscription.customer_token)
+    subscription_object = customer.subscriptions.retrieve(@subscription.subscription_token)
+    subscription_object.plan = @subscription.plan.name
+    subscription_object.save
 
     @subscription.save
 

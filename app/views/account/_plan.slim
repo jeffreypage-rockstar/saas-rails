@@ -1,5 +1,5 @@
 .col-md-3
-  = simple_form_for @subscription |f| do
+  = simple_form_for @subscription do |f|
     .plan-block
       - if plan.name == 'growth'
         .plan-popular
@@ -25,4 +25,6 @@
         hr
         = f.hidden_field :plan_id, value: plan.id
         = f.hidden_field :user_id, value: current_user.id
-        script.stripe-button[src="https://checkout.stripe.com/checkout.js" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-description="New users are charged after 7 days" data-name="#{plan.name.upcase}" data-label="#{subscribe_button_text(current_user, plan.name)}" data-panel-label="#{subscribe_button_text(current_user, plan.name)}"]
+        - if subscribe_button_text(plan) == 'Start Free Trial'
+          script.stripe-button[src="https://checkout.stripe.com/checkout.js" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-description="New users are charged after 7 days" data-name="#{plan.name.upcase}" data-label="Start Free Trial" data-panel-label="Start Free Trial"]
+        = f.submit "#{subscribe_button_text(plan)}", class: "buy-button #{buy_button_class(plan)}"
