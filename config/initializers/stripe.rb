@@ -1,4 +1,5 @@
 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+Stripe.api_version = '2015-01-11'
 StripeEvent.configure do |events|
   events.subscribe 'charge.failed' do |event|
     # Define subscriber behavior based on the event object

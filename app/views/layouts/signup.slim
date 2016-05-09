@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | YesInsights
+    link[href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css"]
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    #signUp
+      .header
+        = link_to image_tag('logo.png', class: 'logo-image'), root_path
+      .container
+        .page-title.text-center
+          h1 Risk-free 7 day trial
+          h4.font-weight-normal Your card won’t be charged during the trial period and you can cancel anytime.
+        = yield

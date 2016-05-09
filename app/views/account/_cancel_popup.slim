@@ -4,4 +4,4 @@
   p All surveys, responses, and comments associated with your account will be inactive by the next billing cycle.
   .actions
     = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
-    = link_to 'Cancel Subscription', edit_user_registration_path, class:'grey-button delete'
+    = link_to 'Cancel Subscription', cancel_subscription_path(current_user.subscription), class:'grey-button delete'

@@ -1,7 +1,344 @@
-#welcome
-  header
-    = image_tag 'logo.png', class: 'logo-image'
-  .container
-    .welcome-content
-      h1 Welcome to YesInsights!!!
-      = link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary'
+doctype html
+html[lang="en"]
+  head
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    meta[name="description" content="Discover the best podcast, content, books, and stories related to tech and entrepreneurship"]
+    title
+      | YesInsights - Get Customer feedback with simple one-click surveys
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'main'
+    = javascript_include_tag 'application'
+    link[href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css"]
+
+  body[data-spy="scroll" data-offset="0" data-target="#navbar-main"]
+    #navbar-main.navbar
+      .navbar.navbar-static-top
+        .container
+          .navbar-header
+            button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse" style="float:right;"]
+            a.navbar-brand[href="/"]
+              span
+                = image_tag 'yesinsights-logo.png', style: 'height:24px; background:transparent; padding: 0 6px;'
+          .navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                = link_to 'Log In', new_user_session_path
+
+    #headerwrap[name="home"]
+      header.clearfix
+        .col-sm-10.col-md-10.col-md-offset-1.text-center
+          div[style="text-align:left; display:none;"]
+            = image_tag 'yesinsights-logo.png', class: 'logo'
+          div[style="width: 90%; margin: 0 auto;"]
+            h1
+              | Get more customer feedback with simple one-click surveys.
+            p
+              | Let customers easily answer your question with a tap or click and get more actionable feedback.
+          .col-sm-10.col-md-10.col-md-offset-1.text-center[style="padding-top:30px;"]
+            = image_tag 'hero-image.png', style: 'width:100%;'
+    section[style="padding: 40px 0 60px 0; background: #fafafa; border-top: 1px solid #ddd;"]
+      .container
+        .row
+          .col-lg-12.text-center
+            h2
+              | Start using YesInsights today!
+            .btn.btn-lg.btn-blue[style="margin-top:30px;"]
+              .lightbox-61236810150141
+                | See Pricing and Sign Up
+      .container[style="padding-top:30px;"]
+        .col-lg-10.col-lg-offset-1.text-center
+          p.large[style="margin-top: 10px; color: #777; font-size: 1.2em;"]
+            | "It’s so easy for the customer to just click and send feedback on the single survey question, that response rates are much higher than conventional survey forms."
+          p[style="color: #aaa; font-size: 1em;"]
+            |  - Sammy Lau, Canopy Labs (YC S12)
+          = image_tag 'sammy.jpg', style: 'width: 100px; margin: 0 auto;', class: 'img-responsive img-circle'
+    section#how-it-works[style="padding: 60px 0 0 0; border: 1px solid #ddd;"]
+      .container
+        .row
+          .col-lg-12.text-center
+            p.text-header[style="color: #929292"]
+              | HOW IT WORKS
+            h2.section-heading
+              | Customer feedback is just a click away
+            p[style="width:85%; margin: 0 auto; font-size:18px; color: #555555; margin-top:15px;"]
+              | You send your customers a survey with a single question. They answer the question with a click or tap and provide additional feedback in their own words. Their response instantly appears in your YesInsights dashboard.
+      .container[style="margin-top: 80px;"]
+        .row[style="margin-bottom:160px;"]
+          .col-lg-4.col-md-6.text-center
+            .steps-survey
+              = image_tag 'survey.png', style: 'width:100px;'
+              h4
+                | 1. CREATE SURVEY
+          .col-lg-4.col-md-6.text-center
+            .steps-survey
+              = image_tag 'response.png', style: 'width:100px;'
+              h4
+                | 2. GET RESPONSES
+          .col-lg-4.col-md-6.text-center
+            .steps-survey
+              =image_tag 'analyze.png', style: 'width:100px;'
+              h4
+                | 3. ANALYZE FEEDBACK
+        .step-container
+          .container
+            .row
+              .col-lg-6.col-sm-6.left
+                p.text-header[style="color:#FFA45B;"]
+                  | 1. CREATE SURVEY
+                h2
+                  | Create and easily share your survey
+                p
+                  | When you send surveys using YesInsights, you make it quick and easy for people to respond -- they simply click or tap on their answer, right inside your email and you get customer insights immediately!
+              .col-lg-6.col-lg-offset-0.col-sm-6.left
+                = image_tag 'survey-large.png', style: 'width:100%;'
+        .step-container
+          .container
+            .row
+              .col-lg-6.col-lg-offset-0.col-sm-push-6.col-sm-6.right
+                p.text-header[style="color:#DC89FF;"]
+                  | 2. GET RESPONSES
+                h2
+                  | Customers responds with one-click
+                p
+                  | When you send surveys using YesInsights, you make it quick and easy for people to respond -- they simply click or tap on their answer, right inside your email and you get customer insights immediately!
+              .col-lg-6.col-sm-pull-6.col-sm-6.right
+                = image_tag 'response-large.png', style: 'width:100%;'
+        .step-container
+          .container
+            .row
+              .col-lg-6.col-sm-6.left
+                p.text-header[style="color:#6FE593;"]
+                  | 3. ANALYZE FEEDBACK
+                h2
+                  | Get actionable feedback
+                p
+                  | When you send surveys using YesInsights, you make it quick and easy for people to respond -- they simply click or tap on their answer, right inside your email and you get customer insights immediately!
+              .col-lg-6.col-lg-offset-0.col-sm-6.left
+                = image_tag 'analyze-large.png', style: 'width:100%;'
+    section#questions[style="padding: 60px 0 60px 0; border-bottom: 1px solid #ddd;"]
+      .container
+        .row
+          .col-lg-12.text-center
+            p.text-header[style="color: rgba(255,255,255,.7)"]
+              | USE CASES
+            h2.section-heading
+              | Ask all your burning questions
+            p[style="width:85%; margin: 0 auto; font-size:18px; margin-top:15px;"]
+              | You'll get many more responses with YesInsights compared to traditional surveys
+      .container[style="margin-top:80px;"]
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-8
+                .arrow_box.arrow_box_right.question
+                  p
+                    | “Why did you cancel your account?” 
+              .col-md-3
+      .container
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-3
+              .col-md-8
+                .arrow_box.arrow_box_left.question
+                  p
+                    | “
+                    |  We’re planning to increase your subscription price by 10%. What reward would you accept in return?”
+      .container
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-8
+                .arrow_box.arrow_box_right.question
+                  p
+                    | “What topic should we cover on our next blog post?”
+              .col-md-3
+      .container
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-3
+              .col-md-8
+                .arrow_box.arrow_box_left.question
+                  p
+                    | “How satisfied were you with our customer support?”
+      .container
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-8
+                .arrow_box.arrow_box_right.question
+                  p
+                    | “What new feature would you like us to build next?”
+              .col-md-3
+      .container
+        .row
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-3
+              .col-md-8
+                .arrow_box.arrow_box_left.question
+                  p
+                    | “Which of our features needs the most improvement?”
+    section#share-anywhere[style="padding: 60px 0 80px 0; background:#fafafa; border-bottom: 1px solid #ddd;"]
+      .container
+        .row
+          .col-lg-12.text-center
+            h2.section-heading
+              | Share your surveys anywhere
+            p[style="width:85%; margin: 0 auto; font-size:18px; color: #555555; margin-top:15px;"]
+              | You can share your YesInsights survey anywhere you can use links. Email, blogs, social sites, or anywhere else on the web.
+          .col-lg-12.col-md-6.text-center.col-lg-offset-2[style="margin-top: 60px;"]
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'medium.png', style: 'width: 90%'
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'quora.png', style: 'width: 90%'
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'tumblr.png', style: 'width: 90%'
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'wordpress.png', style: 'width: 90%'
+          .col-lg-12.col-md-6.text-center.col-lg-offset-3[style="margin-top: 50px;"]
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'gmail.png', style: 'width: 90%'
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'yahoo.png', style: 'width: 90%'
+            .col-lg-2.col-md-6.text-center
+              = image_tag 'apple.png', style: 'width: 90%'
+        .col-lg-12.text-center
+          p[style="width:85%; margin: 0 auto; font-size:18px; color: #555555; margin-top:40px;"]
+            | And many more!
+    section.no-padding
+      .container-fluid
+        .row[style="margin-right:-15px;"]
+          .col-lg-6.col-sm-6[style="background: #285D82; border:none;"]
+            .ds-quote[style="color: #fff; padding: 30px 106px; height:400px;"]
+              div
+                h3[style="margin-top:60px; letter-spacing:1px; line-height:40px; font-size:30px; color: #fff;"]
+                  | “Wonder what your customer really wants? Ask. Don’t tell.”
+              .transparent
+                p[style="font-size:18px;"]
+                  | Lisa Stone
+                  | BlogHer co-founder and CEO
+          .col-lg-6.col-sm-6[style="background-image: url('assets/lisa-stone.jpg'); background-size:cover; background-position: center;padding:none; height: 400px;"]
+
+    .container
+      #billing
+        .header
+
+        .clearfix
+        .billing-block
+          p.text-header[style="color: #929292"]
+            | PRICING AND SIGN UP
+          h2.section-heading
+            | Try YesInsights FREE for 7 days
+          p[style="width:85%; margin: 0 auto; font-size:18px; color: #555555; margin-top:15px;"]
+            | Use YesInsights risk-free for 7 days and get better customer feedback. Cancel anytime if you're unhappy.
+          .plans
+            .row
+              .col-md-3
+                .plan-block
+                  .plan-header.personal
+                    .text-center
+                      p
+                        |  P E R S O N A L 
+                  .plan-content
+                    .plan-price
+                      h2.text-center
+                        |  $9 
+                      h4.text-center
+                        |  per month 
+                    hr
+                    p.text-center
+                      |  1,000 responses 
+                    hr
+                    p.text-center
+                      |  5 surveys 
+                    hr
+                    p.text-center
+                      |  Instant notifications 
+                    hr
+                    a.buy-button.btn.btn-default[href="#{new_user_registration_path}?plan=personal"]
+                      | Get Started
+              .col-md-3
+                .plan-block
+                  .plan-header.startup
+                    .text-center
+                      p
+                        |  S T A R T U P 
+                  .plan-content
+                    .plan-price
+                      h2.text-center
+                        |  $20 
+                      h4.text-center
+                        |  per month 
+                    hr
+                    p.text-center
+                      |  5,000 responses 
+                    hr
+                    p.text-center
+                      |  10 surveys 
+                    hr
+                    p.text-center
+                      |  Instant notifications 
+                    hr
+                    a.buy-button.btn.btn-default[href="#{new_user_registration_path}?plan=startup"]
+                      | Get Started
+              .col-md-3
+                .plan-block
+                  .plan-popular
+                    .text-center
+                      p
+                        |  Most popular 
+                  .plan-header.growth
+                    .text-center
+                      p
+                        |  G R O W T H 
+                  .plan-content
+                    .plan-price
+                      h2.text-center
+                        |  $59 
+                      h4.text-center
+                        |  per month 
+                    hr
+                    p.text-center
+                      |  25,000 responses 
+                    hr
+                    p.text-center
+                      |  Unlimited surveys 
+                    hr
+                    p.text-center
+                      |  Instant notifications 
+                    hr
+                    a.buy-button.btn.btn-default[href="#{new_user_registration_path}?plan=growth"]
+                      | Get Started
+              .col-md-3
+                .plan-block
+                  .plan-header.enterprise
+                    .text-center
+                      p
+                        |  E N T E R P R I S E 
+                  .plan-content
+                    .plan-price
+                      h2.text-center
+                        |  $149 
+                      h4.text-center
+                        |  per month 
+                    hr
+                    p.text-center
+                      |  Unlimited responses 
+                    hr
+                    p.text-center
+                      |  Unlimited surveys 
+                    hr
+                    p.text-center
+                      |  Instant notifications 
+                    hr
+                    a.buy-button.btn.btn-default[href="#{new_user_registration_path}?plan=enterprise"]
+                      | Get Started
+          br
+          br
+          h4.text-center
+            |  Have questions? Email us at 
+            a[href="mailto:success@YesInsights.com"]
+              | success@YesInsights.com

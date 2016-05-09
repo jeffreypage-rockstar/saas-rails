@@ -44,7 +44,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :subscriptions, only: [:create, :update]
+    resources :subscriptions, only: [:new, :create, :update] do
+      member do
+        get 'cancel'
+      end
+    end
 
     get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
     get '/account/cancel', to: 'account#cancel', as: 'account_cancel'

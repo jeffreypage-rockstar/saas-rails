@@ -1,22 +1,47 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'yesinsights', only: [:edit, :update]
+  layout 'signup'
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update]
 
 
   # GET /resource/sign_up
   def new
-    super
+    build_resource({})
+    set_minimum_password_length
+    yield resource if block_given?
+    @plan = params[:plan]
+    respond_with self.resource do |format|
+      format.html { render layout: 'signup'}
+    end
   end
 
   # POST /resource
   def create
-    super
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        plan = Plan.find_by_name params[:plan]
+        redirect_to "#{new_subscription_path}?plan=#{plan.id}"
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
   end
 
   # GET /resource/edit
   def edit
-    super
+    render :edit, layout: 'yesinsights'
   end
 
   def cancel
@@ -35,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.update(params)
       flash[:success] = "Successfully updated your profile"
     end
-    render 'devise/registrations/edit'
+    render 'devise/registrations/edit', layout: 'yesinsights'
   end
 
   # DELETE /resource
