@@ -41,7 +41,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    flash[:alert] = 'Your YesInsights account is inactive. To resume your subscription, please <a href="billing">pick a plan.</a>'
+    unless current_user.active?
+      flash[:alert] = 'Your YesInsights account is inactive. To resume your subscription, please <a href="billing">pick a plan.</a>'
+    end
+
     render :edit, layout: 'yesinsights'
   end
 
