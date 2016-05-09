@@ -15,7 +15,7 @@ jQuery(function ($) {
             $form.find("input[type=submit]").prop("disabled", false);
         } else {
             token = response.id;
-            $form.append($("<input type=\"hidden\" name=\"stripe_token\" />").val(token));
+            $form.append($("<input type=\"hidden\" name=\"stripeToken\" />").val(token));
             $("[data-stripe=number]").remove();
             $("[data-stripe=cvv]").remove();
             $("[data-stripe=exp-year]").remove();
