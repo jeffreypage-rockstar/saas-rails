@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:update, :cancel]
+  protect_from_forgery except: :webhook
 
   def new
     @subscription = current_user.build_subscription
@@ -43,8 +44,20 @@ class SubscriptionsController < ApplicationController
     customer = Stripe::Customer.retrieve(@subscription.customer_token)
     subscription_object = customer.subscriptions.retrieve(@subscription.subscription_token)
     subscription_object.delete(:at_period_end => true)
+    flash[:alert] = 'You have cancelled your subscription. Your account will be inactive in the next billing cycle and you will not be charged.'
+    redirect_to account_settings_path
+  end
 
-    redirect_to account_billing_path
+  def webhook
+    event = Stripe::Event.retrieve(params["id"])
+
+    case event.type
+      when 'customer.subscription.deleted' #subscription is actually canceled at the end of the billing period
+        current_user.subscription.subscription_token = nil
+        current_user.active = false
+        current_user.save
+    end
+    render status: :ok, json: "success"
   end
 
   private
