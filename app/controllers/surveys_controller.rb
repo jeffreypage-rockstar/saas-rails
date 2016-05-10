@@ -75,7 +75,7 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.require(:survey).permit(
-        :name, :notify_enabled,
+        :name, :notify_by_email, :notify_by_slack,
         question_attributes: [:name, choices_attributes: [:name, :color] ],
         landing_page_attributes: [:headline, :subtitle, :comment_enabled]
     )

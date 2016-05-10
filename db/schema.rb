@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510023430) do
+ActiveRecord::Schema.define(version: 20160510094323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,14 +104,15 @@ ActiveRecord::Schema.define(version: 20160510023430) do
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
-    t.string   "name",                           null: false
+    t.string   "name",                            null: false
     t.integer  "landing_page_id"
     t.integer  "question_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id"
-    t.boolean  "notify_enabled",  default: true
     t.boolean  "active",          default: true
+    t.boolean  "notify_by_email", default: true
+    t.boolean  "notify_by_slack", default: false
   end
 
   add_index "surveys", ["question_id"], name: "index_surveys_on_question_id", using: :btree

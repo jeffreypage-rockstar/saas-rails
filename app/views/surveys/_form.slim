@@ -31,7 +31,9 @@
           = link_to 'Preview Landing Page', landing_page_preview_path, class: 'grey-button', remote: true, id: 'preview_landing_page'
           = landing_page.input :comment_enabled
         hr
-        = f.input :notify_enabled, label: 'Notify me of every response'
+        strong Notify me of every response
+        = f.input :notify_by_slack, label: 'Slack'
+        = f.input :notify_by_email, label: 'Email'
         = f.submit (edit_survey? ? 'Update Survey' : 'Create Survey!'), class: 'btn btn-default'
         hr
         - if edit_survey?

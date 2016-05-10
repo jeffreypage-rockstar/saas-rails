@@ -4,18 +4,28 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     if @response.choice.question.survey.active?
       if @response.save
-        if @response.choice.question.survey.notify_enabled?
+        if @response.choice.question.survey.notify_by_email? # Send email to the owner of the survey
           UserMailer.new_response_email(@response.choice.question.survey.user, @response.choice.question).deliver_now
         end
-        # Send slack notification to the registered channel
-        unless current_user.slack_url.nil?
-          notifier = Slack::Notifier.new current_user.slack_url
-          notifier.ping "A new response for your survey - #{@response.choice.question.name}"
+        if @response.choice.question.survey.notify_by_slack && current_user.slack_url.present? # Send slack notification to the registered channel
+          notifier = Slack::Notifier.new current_user.slack_url, username: 'YesInsights'
+          icon_url = "http://yesinsights.com#{view_context.image_path('logo-small.png')}"
+          text = "Someone responded to your survey: <a href='#{survey_url(@response.choice.question.survey)}'>#{@response.choice.question.survey.name}</a>"
+          text = Slack::Notifier::LinkFormatter.format(text)
+          attachment_text = "*Question*\n#{@response.choice.question.name}\n\n*Response*\n#{@response.choice.name}\n\n*Comment*\n#{@response.comment.nil? ? 'N/A' : @response.comment}"
+          attachments = [{
+            color: '#50b1e3',
+            mrkdwn_in: ["text"],
+            text: attachment_text
+          }]
+          puts icon_url
+          notifier.ping text, icon_url: icon_url, attachments: attachments
         end
-
 
         redirect_to create_success_responses_path
       else
+        @choice = @response.choice
+        @landingPage = @choice.question.survey.landing_page
         render 'new'
       end
     else
