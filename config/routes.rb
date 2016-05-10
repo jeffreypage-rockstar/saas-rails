@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # Routes that doesn't need user authentication
 
   resources :choices do
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   mount StripeEvent::Engine, at: '/webhook'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # Customize devise controller for user registrations
   devise_for :users, controllers: { registrations: 'users/registrations' }

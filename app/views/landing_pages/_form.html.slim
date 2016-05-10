@@ -5,7 +5,7 @@
     p.text-center
       = @landingPage.subtitle
     hr
-    = simple_form_for(@response, html: {id: 'newCommentForm'}) do |f|
+    = simple_form_for(@response, html: {id: 'newCommentForm'}, url: response_path(@response), method: :put) do |f|
       = f.hidden_field :choice_id
       = f.input :email, label: 'Your email', placeholder: 'yourname@domain.com'
       - if @landingPage.comment_enabled?

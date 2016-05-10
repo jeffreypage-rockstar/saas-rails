@@ -3,6 +3,7 @@ class ChoicesController < ApplicationController
 
   def select
     @response = @choice.responses.build
+    @response.save(validate: false)
     @landingPage = @choice.question.survey.landing_page
     render 'responses/new'
   end

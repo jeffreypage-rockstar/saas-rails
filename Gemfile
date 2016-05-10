@@ -54,6 +54,9 @@ gem 'stripe_event'
 # slack notifier
 gem 'slack-notifier'
 
+# rails_admin
+gem 'rails_admin'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
