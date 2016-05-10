@@ -1,0 +1,7 @@
+.header
+  h4.pull-left
+    | Account
+  .pull-right
+    = link_to 'Settings', edit_user_registration_path, class: account_active_class(edit_user_registration_path)
+    = link_to 'Plans', account_billing_path, class: account_active_class(account_billing_path)
+    = link_to 'Integrations', account_integrations_path, class: account_active_class(account_integrations_path)

@@ -1,10 +1,5 @@
 #billing
-  .header
-    h4.pull-left
-      | Account
-    .pull-right
-      = link_to 'Settings', edit_user_registration_path, class: account_active_class(edit_user_registration_path)
-      = link_to 'Billing', account_billing_path, class: account_active_class(account_billing_path)
+  = render 'layouts/account_navigation'
   .clearfix
   .billing-block
     h2.text-center Our Plans

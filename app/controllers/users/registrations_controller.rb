@@ -64,7 +64,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.update(params)
       flash[:success] = "Successfully updated your profile"
     end
-    render 'devise/registrations/edit', layout: 'yesinsights'
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   # DELETE /resource
@@ -81,7 +82,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << [:project_title, :name]
+    devise_parameter_sanitizer.for(:account_update) << [:project_title, :name, :slack_url]
   end
 
   # The path used after sign up.

@@ -1,0 +1,15 @@
+#integrations
+  = render 'layouts/account_navigation'
+  .clearfix
+  = simple_form_for(current_user, url: registration_path(current_user), html: {method: :put}) do |f|
+    h4 Slack
+    p.font-weight-normal Get notified in Slack whenever your surveys get a response.
+    br
+    p To get started:
+    p.font-weight-normal 1.) Create an Incoming Webhooks Integration in your Slack team
+    p.font-weight-normal 2.) Paste the Webhook URL in the text field below
+    br
+    .form-inputs
+      = f.input :slack_url, autofocus: true, label: 'Your Slack Incoming Webhook URL'
+    .form-actions
+      = f.button :submit, 'Save Changes'

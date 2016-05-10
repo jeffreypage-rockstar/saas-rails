@@ -7,6 +7,12 @@ class ResponsesController < ApplicationController
         if @response.choice.question.survey.notify_enabled?
           UserMailer.new_response_email(@response.choice.question.survey.user, @response.choice.question).deliver_now
         end
+        # Send slack notification to the registered channel
+        unless current_user.slack_url.nil?
+          notifier = Slack::Notifier.new current_user.slack_url
+          notifier.ping "A new response for your survey - #{@response.choice.question.name}"
+        end
+
 
         redirect_to create_success_responses_path
       else
