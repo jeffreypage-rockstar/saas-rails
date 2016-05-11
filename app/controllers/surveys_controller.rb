@@ -5,6 +5,9 @@ class SurveysController < ApplicationController
   layout 'yesinsights'
 
   def index
+    if current_user.admin?
+      redirect_to rails_admin_path
+    end
   end
 
   def new
