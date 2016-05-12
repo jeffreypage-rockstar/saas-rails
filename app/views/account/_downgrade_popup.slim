@@ -1,0 +1,6 @@
+#delete_survey_popup.text-center.popup
+  h3 Downgrade to Personal Plan
+  p We’re sad to see you downgrade. Your usage limits will be reduced starting on your next billing period and you will be charged the amount for your new plan.
+  .actions
+    = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
+    = link_to 'Downgrade Plan', survey_path(@survey), method: 'delete', class:'grey-button delete'

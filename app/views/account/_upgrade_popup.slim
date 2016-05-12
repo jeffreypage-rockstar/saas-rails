@@ -1,0 +1,7 @@
+#delete_survey_popup.text-center.popup
+  h3 Delete Survey?
+  p Are you sure you want to delete this survey?
+  p This action can’t be undone! All responses and comments associated with this survey will be deleted.
+  .actions
+    = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
+    = link_to 'Delete Survey', survey_path(@survey), method: 'delete', class:'grey-button delete'

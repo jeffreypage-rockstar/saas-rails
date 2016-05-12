@@ -19,3 +19,5 @@ config/database.yml
 /log/*
 !/log/.keep
 /tmp
+server.key
+yesinsights_com.crt
