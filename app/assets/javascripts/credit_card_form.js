@@ -1,6 +1,6 @@
 jQuery(function ($) {
     var show_error, stripeResponseHandler;
-    $(".new-subscription").submit(function (event) {
+    $(".credit-card-form").submit(function (event) {
         var $form;
         $form = $(this);
         $form.find("input[type=submit]").prop("disabled", true);
@@ -9,7 +9,7 @@ jQuery(function ($) {
     });
     stripeResponseHandler = function (status, response) {
         var $form, token;
-        $form = $(".new-subscription");
+        $form = $(".credit-card-form");
         if (response.error) {
             show_error(response.error.message);
             $form.find("input[type=submit]").prop("disabled", false);

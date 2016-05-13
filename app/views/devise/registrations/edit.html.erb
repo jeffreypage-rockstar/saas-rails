@@ -17,13 +17,17 @@
       <div class="form-actions">
         <%= f.button :submit, 'Save Changes', class: 'pull-left' %>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-default' %>
+
       </div>
-      <% unless current_user.active? %>
+      <div class="clearfix"></div>
+      <br/>
+
+      <%= link_to 'Update Billing Info', account_update_card_path, class:'grey-button', remote: true %>
+      <% if current_user.active? %>
         <br/>
         <hr/>
         <br/>
         <%= link_to 'Cancel Subscription', account_cancel_popup_path(@survey), class:'grey-button delete', remote: true %>
       <% end %>
-
     <% end %>
 </div>

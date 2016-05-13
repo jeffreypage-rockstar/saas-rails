@@ -1,7 +1,7 @@
 #delete_survey_popup.text-center.popup
-  h3 Delete Survey?
-  p Are you sure you want to delete this survey?
-  p This action can’t be undone! All responses and comments associated with this survey will be deleted.
+  h3 Confirm Upgrade to #{plan.name} Plan
+  p You will get expanded usage limits as soon as you upgrade. We’re very excited you’re getting value from YesInsights!
+  p Your card will be charged the prorated amount for the remainder of this billing period, and the full plan amount starting next billing period.
   .actions
     = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
-    = link_to 'Delete Survey', survey_path(@survey), method: 'delete', class:'grey-button delete'
+    = link_to 'Upgrade Plan', survey_path(@survey), method: 'delete', class:'grey-button delete'

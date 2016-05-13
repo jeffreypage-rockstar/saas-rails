@@ -49,14 +49,17 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:new, :create, :update] do
       member do
         get 'cancel'
+        post 'update_card'
       end
     end
 
     get '/settings', to: 'devise/registrations#edit', as: 'account_settings'
     get '/account/cancel', to: 'account#cancel', as: 'account_cancel'
     get '/account/cancel_popup', to: 'account#cancel_popup', as: 'account_cancel_popup'
+    get '/account/update_card', to: 'account#update_card', as: 'account_update_card'
     get '/plans', to:'account#billing', as: 'account_billing'
     get '/integrations', to:'account#integrations', as: 'account_integrations'
+
     post '/webhook', to: 'subscriptions#webhook'
     post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
   end

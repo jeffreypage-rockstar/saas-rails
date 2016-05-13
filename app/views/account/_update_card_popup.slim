@@ -1,0 +1,9 @@
+#update_card_popup
+  javascript:
+    Stripe.setPublishableKey('#{ENV["STRIPE_PUBLIC_KEY"]}');
+  = simple_form_for 'card', url: update_card_subscription_path(current_user.subscription), html: {id: 'signUpForm', class: 'credit-card-form'}, remote: true do |f|
+    h3 Update Billing Info
+    = render 'subscriptions/credit_card_form'
+    = f.submit 'Update Card', class: 'btn btn-default'
+    br
+    = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'

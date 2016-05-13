@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: [:update, :cancel]
+  before_action :set_subscription, only: [:update, :update_card, :cancel]
   protect_from_forgery except: :webhook
 
   def new
@@ -28,16 +28,18 @@ class SubscriptionsController < ApplicationController
     redirect_to account_billing_path
   end
 
-  def change
-    @subscription = current_user.subscription
+  def update_card
+    token = params[:stripeToken]
     customer = Stripe::Customer.retrieve(@subscription.customer_token)
-    subscription_object = customer.subscriptions.retrieve(@subscription.subscription_token)
-    subscription_object.plan = @subscription.plan.name
-    subscription_object.save
-
-    @subscription.save
-
-    redirect_to account_billing_path
+    card = customer.sources.create(card: token)
+    card.save
+    customer.default_source = card.id
+    customer.save
+    flash[:success] = 'Saved. Your card information has been updated.'
+    redirect_to edit_user_registration_path
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while updating card info: #{e.message}"
+    false
   end
 
   def update
@@ -65,9 +67,15 @@ class SubscriptionsController < ApplicationController
 
     case event.type
       when 'customer.subscription.deleted' #subscription is actually canceled at the end of the billing period
-        current_user.subscription.subscription_token = nil
-        current_user.active = false
-        current_user.save
+        subscription = Subscription.find_by_customer_token event.data.object.customer
+        if subscription.present?
+          subscription.subscription_token = nil
+          subscription.user.active = false
+          subscription.save
+          subscription.user.save
+        end
+      when 'invoice.payment_succeeded' #renew subscription
+        Subscription.find_by_customer_token(event.data.object.customer).renew
     end
     render status: :ok, json: "success"
   end

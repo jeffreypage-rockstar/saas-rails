@@ -9,4 +9,6 @@ class AccountController < ApplicationController
   def integrations
 
   end
+
+
 end
