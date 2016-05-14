@@ -63,5 +63,8 @@ Rails.application.routes.draw do
     post '/webhook', to: 'subscriptions#webhook'
     post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
   end
+
+  match '/google2cb28f06c5aee4fe.html',
+        to: proc { |env| [200, {}, ["google-site-verification: google2cb28f06c5aee4fe.html"]] }
 end
 
