@@ -66,6 +66,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Dotenv Rails
 gem 'dotenv-rails', :groups => [:development, :test]
 
+# 12factor
+gem 'rails_12factor', group: :production
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
