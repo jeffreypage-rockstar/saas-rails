@@ -1,28 +1,25 @@
 .col-md-3
-  = simple_form_for @subscription, html: {id: plan.name} do |f|
-    .plan-block
-      - if plan.name == 'growth'
-        .plan-popular
-          .text-center
-            p Most popular
-      .plan-header class="#{plan.name}"
+  .plan-block
+    - if plan.name == 'growth'
+      .plan-popular
         .text-center
-          p
-            = plan.name.upcase
-      .plan-content
-        .plan-price
-          h2.text-center
-            = "$#{plan.price}"
-          h4.text-center per month
-        hr
-        p.text-center
-          = "#{plan.response_limit > 0 ? plan.response_limit : 'Unlimited'} responses"
-        hr
-        p.text-center
-          = "#{plan.survey_limit > 0 ? plan.survey_limit : 'Unlimited'} surveys"
-        hr
-        p.text-center Instant notifications
-        hr
-        = f.hidden_field :plan_id, value: plan.id
-        = f.hidden_field :user_id, value: current_user.id
-        = f.submit "#{subscribe_button_text(plan)}", class: "buy-button #{buy_button_class(plan)}", data: {plan_name: plan.name}
+          p Most popular
+    .plan-header class="#{plan.name}"
+      .text-center
+        p
+          = plan.name.upcase
+    .plan-content
+      .plan-price
+        h2.text-center
+          = "$#{plan.price}"
+        h4.text-center per month
+      hr
+      p.text-center
+        = "#{plan.response_limit > 0 ? plan.response_limit : 'Unlimited'} responses"
+      hr
+      p.text-center
+        = "#{plan.survey_limit > 0 ? plan.survey_limit : 'Unlimited'} surveys"
+      hr
+      p.text-center Instant notifications
+      hr
+      = link_to "#{subscribe_button_text(plan)}", "#{account_change_plan_path}?doing=#{subscribe_button_text(plan).downcase}", class: "btn btn-default buy-button #{buy_button_class(plan)}", data: {plan_name: plan.name}, remote: true

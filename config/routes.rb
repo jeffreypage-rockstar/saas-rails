@@ -57,11 +57,12 @@ Rails.application.routes.draw do
     get '/account/cancel', to: 'account#cancel', as: 'account_cancel'
     get '/account/cancel_popup', to: 'account#cancel_popup', as: 'account_cancel_popup'
     get '/account/update_card', to: 'account#update_card', as: 'account_update_card'
+    get '/account/change_plan', to: 'account#change_plan', as: 'account_change_plan'
     get '/plans', to:'account#billing', as: 'account_billing'
     get '/integrations', to:'account#integrations', as: 'account_integrations'
-
     post '/webhook', to: 'subscriptions#webhook'
     post '/landing_page/preview', to: 'landing_pages#preview', as: 'landing_page_preview'
+
   end
 
   get '/google2cb28f06c5aee4fe.html',
