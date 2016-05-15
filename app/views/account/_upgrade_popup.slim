@@ -1,7 +1,8 @@
 #delete_survey_popup.text-center.popup
+  - plan = Plan.find(@plan_id)
   h3 Confirm Upgrade to #{plan.name} Plan
   p You will get expanded usage limits as soon as you upgrade. We’re very excited you’re getting value from YesInsights!
   p Your card will be charged the prorated amount for the remainder of this billing period, and the full plan amount starting next billing period.
   .actions
     = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
-    = link_to 'Downgrade Plan', "#{subscription_path(current_user.subscription)}?plan_id=#{plan_id}", method: 'patch', class:'grey-button delete'
+    = link_to 'Upgrade Plan', "#{subscription_path(current_user.subscription)}?plan_id=#{plan_id}", method: 'patch', class:'grey-button delete'
