@@ -4,4 +4,4 @@
   p Your card will be charged the prorated amount for the remainder of this billing period, and the full plan amount starting next billing period.
   .actions
     = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
-    = link_to 'Upgrade Plan', account_billing_path, method: 'delete', class:'grey-button delete'
+    = link_to 'Downgrade Plan', "#{subscription_path(current_user.subscription)}?plan_id=#{plan_id}", method: 'patch', class:'grey-button delete'

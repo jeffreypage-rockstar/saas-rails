@@ -22,4 +22,4 @@
       hr
       p.text-center Instant notifications
       hr
-      = link_to "#{subscribe_button_text(plan)}", "#{account_change_plan_path}?doing=#{subscribe_button_text(plan).downcase}", class: "btn btn-default buy-button #{buy_button_class(plan)}", data: {plan_name: plan.name}, remote: true
+      = link_to "#{subscribe_button_text(plan)}", "#{account_change_plan_path}?doing=#{subscribe_button_text(plan).downcase}&plan_id=#{plan.id}", class: "btn btn-default buy-button #{buy_button_class(plan)}", data: {plan_name: plan.name}, remote: true

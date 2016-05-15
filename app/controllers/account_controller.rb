@@ -12,6 +12,7 @@ class AccountController < ApplicationController
 
   def change_plan
     @doing = params[:doing]
+    @plan_id = params[:plan_id]
 
   end
 

@@ -43,7 +43,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    @subscription.attributes = subscription_params
+    @subscription.plan_id = params[:plan_id]
     customer = Stripe::Customer.retrieve(@subscription.customer_token)
     subscription_object = customer.subscriptions.retrieve(@subscription.subscription_token)
     subscription_object.plan = @subscription.plan.name

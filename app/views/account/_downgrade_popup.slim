@@ -3,4 +3,4 @@
   p We’re sad to see you downgrade. Your usage limits will be reduced starting on your next billing period and you will be charged the amount for your new plan.
   .actions
     = link_to 'Nevermind', '#', data: {dismiss: 'modal'}, class: 'grey-button'
-    = link_to 'Downgrade Plan', account_billing_path, method: 'delete', class:'grey-button delete'
+    = link_to 'Downgrade Plan', "#{subscription_path(current_user.subscription)}?plan_id=#{plan_id}", method: 'patch', class:'grey-button delete'
