@@ -17,9 +17,11 @@ class SurveysController < ApplicationController
     @landing_page.subtitle = 'If you have a moment, please briefly tell us why.'
     question = @survey.build_question
     generator = ColorGenerator.new saturation: 0.3, lightness: 0.75
+    colors = %w('DD4D5F', '50E3C2', 'F5A623', '39C87C', 'F8E71C', '9E4AE7', '3C8FF0', '8B572A', '323232', 'F981E6')
+
     3.times do
       choice = question.choices.build
-      choice.color = generator.create_hex
+      choice.color = colors.sample
     end
 
   end
@@ -34,10 +36,6 @@ class SurveysController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     @survey.update(survey_params)
     redirect_to surveys_path
@@ -46,14 +44,6 @@ class SurveysController < ApplicationController
   def destroy
     @survey.destroy
     redirect_to surveys_path
-  end
-
-  def delete
-
-  end
-
-  def create_success
-
   end
 
   def pause
