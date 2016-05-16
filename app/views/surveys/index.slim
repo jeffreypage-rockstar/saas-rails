@@ -4,7 +4,7 @@
       .col-md-6
         h2 Surveys
         - if current_user.surveys.all.count > 0
-          - current_user.surveys.all.each do |survey|
+          - current_user.surveys.all.order(created_at: :desc).each do |survey|
             .survey-container
               .row
                 .col-md-6
